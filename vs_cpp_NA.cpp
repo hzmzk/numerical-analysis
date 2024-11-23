@@ -5,7 +5,7 @@
 
 int main()
 {
-    using namespace matplot;
+    /*using namespace matplot;
     std::vector<double> theta = linspace(0,2*pi);
     std::vector<double> x1 = transform(theta, [](auto x) { return cos(x); });
     std::vector<double> y1 = transform(theta, [](auto x) { return sin(x); });
@@ -25,7 +25,9 @@ int main()
     
 
     plot(x1, y1, r.row(1), r.row(2));
-    show();
+    show();*/
+
+    std::cout << "Finally done learning git" << '\n';
 
     
        
