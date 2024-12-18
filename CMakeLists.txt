@@ -10,7 +10,7 @@ add_executable(${PROJECT_NAME}
 	vs_cpp_NA.cpp
 )
 
-target_include_directories(target 
+target_include_directories(${PROJECT_NAME}  
 	PRIVATE
 		${PROJECT_SOURCE_DIR}/include	
 )
