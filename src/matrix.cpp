@@ -6,7 +6,6 @@
 #include <iostream>
 
 
-
 ////////////    Matrix class : Member definitions    /////////////////
 
 Matrix::Matrix(int row, int col, std::initializer_list<double> list)
@@ -29,7 +28,8 @@ void Matrix::print() const
     for (int i{ 0 }; i < m_row; ++i)
     {
         for (int j{ 0 }; j < m_col; ++j)
-            std::cout << std::setw(7) << m_vec[static_cast<std::size_t>(i * m_col + j)] << ' ';
+            std::cout << std::fixed << std::setprecision(4) <<std::setw(7) 
+                << m_vec[static_cast<std::size_t>(i * m_col + j)] << ' ';
         std::cout << '\n';
     }
 }
@@ -37,12 +37,12 @@ void Matrix::print() const
 
 std::vector<double> Matrix::row(int i) const
 {
-    std::vector<double> arr(static_cast<std::size_t>(m_col));
+    std::vector<double> row_i(static_cast<std::size_t>(m_col));
 
     for (int j{ 0 }; j < m_col; ++j)
-        arr[static_cast<std::size_t>(j)] = m_vec[static_cast<std::size_t>((i - 1) * m_col + j)];
+        row_i[static_cast<std::size_t>(j)] = m_vec[static_cast<std::size_t>((i - 1) * m_col + j)];
 
-    return arr;
+    return row_i;
 }
 
 Matrix& Matrix::operator=(const Matrix& copy)
@@ -59,53 +59,51 @@ Matrix& Matrix::operator=(const Matrix& copy)
 }
 
 
-
-
 ///////////////    Matrix Operations    /////////////////////
 
 Matrix operator+(const Matrix& a, const Matrix& b)
 {
-    Matrix c{ a };
+    Matrix temp{ a };
 
     for (int i{ 0 }; i < a.getRow(); ++i)
         for (int j{ 0 }; j < a.getCol(); ++j)
-            c(i, j) = a(i, j) + b(i, j);
+            temp(i, j) = a(i, j) + b(i, j);
 
-    return c;
+    return temp;
 }
 
 Matrix operator-(const Matrix& a, const Matrix& b)
 {
-    Matrix c{ a };
+    Matrix temp{ a };
 
     for (int i{ 0 }; i < a.getRow(); ++i)
         for (int j{ 0 }; j < a.getCol(); ++j)
-            c(i, j) = a(i, j) - b(i, j);
+            temp(i, j) = a(i, j) - b(i, j);
 
-    return c;
+    return temp;
 }
 
 Matrix operator*(const Matrix& a, const Matrix& b)
 {
-    std::vector<double> arr(static_cast<std::size_t>(a.getRow() * b.getCol()));
+    std::vector<double> temp(static_cast<std::size_t>(a.getRow() * b.getCol()));
 
     for (int i{ 0 }; i < a.getRow(); ++i)
         for (int j{ 0 }; j < b.getCol(); ++j)
             for (int l{ 0 }; l < b.getRow(); ++l)
-                arr[static_cast<std::size_t>(i * b.getCol() + j)] += a(i, l) * b(l, j);
+                temp[static_cast<std::size_t>(i * b.getCol() + j)] += a(i, l) * b(l, j);
 
-    return { a.getRow() , b.getCol() , arr };
+    return { a.getRow() , b.getCol() , temp };
 }
 
 Matrix operator*(const double s, const Matrix& a)
 {
-    Matrix c{ a };
+    Matrix temp{ a };
 
     for (int i{ 0 }; i < a.getRow(); ++i)
         for (int j{ 0 }; j < a.getCol(); ++j)
-            c(i, j) = s * a(i, j);
+            temp(i, j) = s * a(i, j);
 
-    return c;
+    return temp;
 }
 
 std::vector<double> operator*(const Matrix& a, std::vector<double>& x)
@@ -122,13 +120,13 @@ std::vector<double> operator*(const Matrix& a, std::vector<double>& x)
 
 Matrix transpose(const Matrix& a)     //Return transpose of a matrix
 {
-    std::vector<double> arr(static_cast<std::size_t>(a.getRow() * a.getCol()));
+    std::vector<double> temp(static_cast<std::size_t>(a.getRow() * a.getCol()));
 
     for (int i{ 0 }; i < a.getRow(); ++i)
         for (int j{ 0 }; j < a.getCol(); ++j)
-            arr[static_cast<std::size_t>(j * a.getRow() + i)] = a(i, j);
+            temp[static_cast<std::size_t>(j * a.getRow() + i)] = a(i, j);
 
-    return { a.getCol() , a.getRow() , arr };
+    return { a.getCol() , a.getRow() , temp };
 }
 
 
