@@ -4,6 +4,9 @@
 #include <vector>
 #include <initializer_list>
 
+
+///////////////    Matrix Class    /////////////////////
+
 class Matrix
 {
 private:
