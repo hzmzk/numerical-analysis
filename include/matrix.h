@@ -13,9 +13,7 @@ private:
    
 public:
     Matrix(int row, int col, std::initializer_list<double> list);
-
     Matrix(int row, int col, std::initializer_list<std::vector<double>> list);
-
     Matrix(int row, int col, std::vector<double>& vec);
 
     double& operator[](int i){ return m_vec[static_cast<std::size_t>(i)]; }
@@ -35,8 +33,6 @@ public:
 };
 
 
-
-
 ///////////////    Matrix Operators Overload    /////////////////////
 
 Matrix operator+(const Matrix& a, const Matrix& b);
@@ -50,9 +46,6 @@ Matrix operator*(const double s, const Matrix& a);
 std::vector<double> operator*(const Matrix& a, std::vector<double>& x);
 
 Matrix transpose(const Matrix& a);     
-
-
-
 
 
 //////////  Matrix-related functions  //////////////

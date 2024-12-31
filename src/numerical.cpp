@@ -3,7 +3,8 @@
 #include <cmath>
 #include <cassert>
 
-int binomial(int n, int k)      //Return binomial coefficient
+
+int binomial(int n, int k)     //Use recursion to find binomial coefficient
 {
     assert(k >= 0 && n >= k);
 

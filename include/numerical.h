@@ -1,9 +1,9 @@
 #ifndef NUMERICAL_ANALYSIS      
 #define NUMERICAL_ANALYSIS      //This header file contains numerical algorithms
 
-#include <vector>
+#include <vector>             
 
-int binomial(int n, int k);      //Return binomial coefficient
+int binomial(int n, int k);  //Return binomial coefficient
 
 int bell_number(int n);      //Return number of partitions of a set
                           
