@@ -1,5 +1,7 @@
 #include "probability.h"
 
+#include <cmath>
+
 double normal_cdf(double z)
 {
     return pow(2, -1) * std::erf(z / sqrt(2)) + 0.5;
