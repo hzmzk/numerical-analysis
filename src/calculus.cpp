@@ -40,9 +40,4 @@ namespace integral
 
 		return trapezoid_estimate * (b - a) / n;
 	}
-
-	//double monte_carlo(double (*fn)(double), double a, double b)
-	//{
-
-	//}
 }
