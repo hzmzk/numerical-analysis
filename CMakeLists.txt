@@ -7,7 +7,7 @@ add_executable(${PROJECT_NAME}
 	src/matrix.cpp
 	src/numerical.cpp
 	src/probability.cpp
-	vs_cpp_NA.cpp
+	"main.cpp"
 )
 
 target_include_directories(${PROJECT_NAME} 
