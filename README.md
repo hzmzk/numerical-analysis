@@ -1,2 +1,2 @@
 # numerical-analysis
-Work-in-Progress numerical-analysis repository
+A repository that contains various numerical algorithm.
